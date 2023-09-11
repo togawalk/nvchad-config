@@ -42,17 +42,42 @@ M.mason = {
 
 -- git support in nvimtree
 M.nvimtree = {
+  filters = {
+    custom = { 'node_modules' },
+  },
   git = {
     enable = true,
+    ignore = false,
   },
 
   renderer = {
     highlight_git = true,
     icons = {
       show = {
-        git = true,
+        file = false,
+        git = false,
+      },
+      glyphs = {
+        default = "󰈚",
+        symlink = "",
+        folder = {
+          default = "󰉋",
+          empty = "",
+          empty_open = "",
+          open = "󰉋",
+          symlink = "",
+          symlink_open = "",
+          arrow_open = "",
+          arrow_closed = "",
+        },
       },
     },
+  },
+}
+
+M.colorizer = {
+  user_default_options = {
+    names = false, -- "Name" codes like Blue or blue
   },
 }
 
