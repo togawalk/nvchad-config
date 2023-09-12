@@ -49,6 +49,17 @@ M.nvimtree = {
 
   renderer = {
     highlight_git = true,
+    indent_markers = {
+      enable = true,
+      inline_arrows = true,
+      icons = {
+        corner = "└",
+        edge = "│",
+        item = "│",
+        none = " ",
+      },
+    },
+
     icons = {
       show = {
         file = false,
@@ -75,6 +86,8 @@ M.nvimtree = {
 M.colorizer = {
   user_default_options = {
     names = false, -- "Name" codes like Blue or blue
+    tailwind = true, -- Enable tailwind colors
+    mode = "virtualtext", -- Set the display mode.
   },
 }
 
