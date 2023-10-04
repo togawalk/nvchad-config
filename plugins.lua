@@ -38,7 +38,6 @@ local plugins = {
     opts = overrides.nvimtree,
   },
 
-  -- Install a plugin
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
@@ -79,6 +78,48 @@ local plugins = {
 		end,
     opts = overrides.ufo
 	},
+
+  {
+    "windwp/nvim-ts-autotag",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = function ()
+      require('nvim-ts-autotag').setup({
+        -- your config
+      })
+    end,
+    lazy = true,
+    event = "VeryLazy"
+  },
+
+  {
+    "derektata/lorem.nvim",
+    lazy = true,
+    event = "VeryLazy"
+  },
+
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    lazy = false,
+    opts = {
+      signs = false, -- show icons in the signs column
+      -- keywords recognized as todo comments
+      keywords = {
+        FIX = {
+          icon = " ", -- icon used for the sign, and in search results
+          color = "#f38ba8", -- can be a hex color, or a named color (see below)
+          alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
+          -- signs = false, -- configure signs for some keywords individually
+        },
+        TODO = { icon = " ", color = "#89b4fa" },
+        HACK = { icon = " ", color = "#fab387" },
+        WARN = { icon = " ", color = "#fab387", alt = { "WARNING", "XXX" } },
+        PERF = { icon = " ", color = "#b4befe", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+        NOTE = { icon = " ", color = "#89b4fa", alt = { "INFO" } },
+        TEST = { icon = "⏲ ", color = "#f5c2e7", alt = { "TESTING", "PASSED", "FAILED" } },
+      },
+    }
+  },
 
   -- All NvChad plugins are lazy-loaded by default
   -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
