@@ -97,6 +97,12 @@ local plugins = {
     event = "VeryLazy"
   },
 
+
+  {
+    "elkowar/yuck.vim",
+    lazy = false,
+  },
+
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
