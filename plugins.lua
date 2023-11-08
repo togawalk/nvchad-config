@@ -1,4 +1,4 @@
-local overrides = require("custom.configs.overrides")
+local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -25,7 +25,7 @@ local plugins = {
   -- override plugin configs
   {
     "williamboman/mason.nvim",
-    opts = overrides.mason
+    opts = overrides.mason,
   },
 
   {
@@ -41,7 +41,7 @@ local plugins = {
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
       "rcarriga/nvim-notify",
-      }
+    },
   },
 
   {
@@ -68,51 +68,82 @@ local plugins = {
   },
 
   {
-		"kevinhwang91/nvim-ufo",
-		dependencies = "kevinhwang91/promise-async",
-		event = "BufReadPost", -- needed for folds to load properly
-		keys = {
-			{
-				"zr",
-				function() require("ufo").openFoldsExceptKinds { "comment" } end,
-				desc = " 󱃄 Open All Folds except comments",
-			},
-			{ "zm", function() require("ufo").closeAllFolds() end, desc = " 󱃄 Close All Folds" },
-			{ "z1", function() require("ufo").closeFoldsWith(1) end, desc = " 󱃄 Close L1 Folds" },
-			{ "z2", function() require("ufo").closeFoldsWith(2) end, desc = " 󱃄 Close L2 Folds" },
-			{ "z3", function() require("ufo").closeFoldsWith(3) end, desc = " 󱃄 Close L3 Folds" },
-			{ "z4", function() require("ufo").closeFoldsWith(4) end, desc = " 󱃄 Close L4 Folds" },
-		},
-		init = function()
-			-- INFO fold commands usually change the foldlevel, which fixes folds, e.g.
-			-- auto-closing them after leaving insert mode, however ufo does not seem to
-			-- have equivalents for zr and zm because there is no saved fold level.
-			-- Consequently, the vim-internal fold levels need to be disabled by setting
-			-- them to 99
-			vim.opt.foldlevel = 99
-			vim.opt.foldlevelstart = 99
-		end,
-    opts = overrides.ufo
-	},
+    "kevinhwang91/nvim-ufo",
+    dependencies = "kevinhwang91/promise-async",
+    event = "BufReadPost", -- needed for folds to load properly
+    keys = {
+      {
+        "zr",
+        function()
+          require("ufo").openFoldsExceptKinds { "comment" }
+        end,
+        desc = " 󱃄 Open All Folds except comments",
+      },
+      {
+        "zm",
+        function()
+          require("ufo").closeAllFolds()
+        end,
+        desc = " 󱃄 Close All Folds",
+      },
+      {
+        "z1",
+        function()
+          require("ufo").closeFoldsWith(1)
+        end,
+        desc = " 󱃄 Close L1 Folds",
+      },
+      {
+        "z2",
+        function()
+          require("ufo").closeFoldsWith(2)
+        end,
+        desc = " 󱃄 Close L2 Folds",
+      },
+      {
+        "z3",
+        function()
+          require("ufo").closeFoldsWith(3)
+        end,
+        desc = " 󱃄 Close L3 Folds",
+      },
+      {
+        "z4",
+        function()
+          require("ufo").closeFoldsWith(4)
+        end,
+        desc = " 󱃄 Close L4 Folds",
+      },
+    },
+    init = function()
+      -- INFO fold commands usually change the foldlevel, which fixes folds, e.g.
+      -- auto-closing them after leaving insert mode, however ufo does not seem to
+      -- have equivalents for zr and zm because there is no saved fold level.
+      -- Consequently, the vim-internal fold levels need to be disabled by setting
+      -- them to 99
+      vim.opt.foldlevel = 99
+      vim.opt.foldlevelstart = 99
+    end,
+    opts = overrides.ufo,
+  },
 
   {
     "windwp/nvim-ts-autotag",
     dependencies = "nvim-treesitter/nvim-treesitter",
-    config = function ()
-      require('nvim-ts-autotag').setup({
+    config = function()
+      require("nvim-ts-autotag").setup {
         -- your config
-      })
+      }
     end,
     lazy = true,
-    event = "VeryLazy"
+    event = "VeryLazy",
   },
 
   {
     "derektata/lorem.nvim",
     lazy = true,
-    event = "VeryLazy"
+    event = "VeryLazy",
   },
-
 
   {
     "elkowar/yuck.vim",
@@ -140,7 +171,7 @@ local plugins = {
         NOTE = { icon = " ", color = "#89b4fa", alt = { "INFO" } },
         TEST = { icon = "⏲ ", color = "#f5c2e7", alt = { "TESTING", "PASSED", "FAILED" } },
       },
-    }
+    },
   },
 
   -- All NvChad plugins are lazy-loaded by default

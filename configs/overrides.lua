@@ -40,7 +40,7 @@ M.mason = {
 -- git support in nvimtree
 M.nvimtree = {
   filters = {
-    custom = { 'node_modules' },
+    custom = { "node_modules" },
   },
   git = {
     enable = true,
@@ -91,14 +91,15 @@ M.colorizer = {
   },
 }
 
-M.ufo= {
+M.ufo = {
   provider_selector = function(_, ft, _)
     -- INFO some filetypes only allow indent, some only LSP, some only
     -- treesitter. However, ufo only accepts two kinds as priority,
     -- therefore making this function necessary :/
-    local lspWithOutFolding =
-      { "markdown", "bash", "sh", "bash", "zsh", "css", "html", "python" }
-    if vim.tbl_contains(lspWithOutFolding, ft) then return { "treesitter", "indent" } end
+    local lspWithOutFolding = { "markdown", "bash", "sh", "bash", "zsh", "css", "html", "python" }
+    if vim.tbl_contains(lspWithOutFolding, ft) then
+      return { "treesitter", "indent" }
+    end
     return { "lsp", "indent" }
   end,
   -- open opening the buffer, close these fold kinds

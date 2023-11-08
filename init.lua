@@ -7,4 +7,3 @@
 -- })
 
 vim.g.toggle_theme_icon = ""
-
