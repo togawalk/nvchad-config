@@ -6,6 +6,12 @@ local plugins = {
   -- Override plugin definition options
 
   {
+    "ellisonleao/glow.nvim",
+    config = true,
+    cmd = "Glow",
+  },
+
+  {
     "neovim/nvim-lspconfig",
     dependencies = {
       -- format & linting
